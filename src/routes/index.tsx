@@ -943,16 +943,8 @@ function ContactCard({
   text: string;
   href?: string;
 }) {
-  const Wrapper: (props: { children: ReactNode }) => JSX.Element = href
-    ? ({ children }) => (
-        <a href={href} className="block">
-          {children}
-        </a>
-      )
-    : ({ children }) => <div>{children}</div>;
-  return (
-    <Wrapper>
-      <div className="flex items-center gap-4 rounded-3xl border border-border bg-card p-5 transition hover:shadow-card">
+  const inner = (
+    <div className="flex items-center gap-4 rounded-3xl border border-border bg-card p-5 transition hover:shadow-card">
         <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary">
           <Icon className="h-5 w-5" />
         </div>
@@ -960,8 +952,14 @@ function ContactCard({
           <div className="text-sm font-semibold text-foreground">{title}</div>
           <div className="text-sm text-muted-foreground">{text}</div>
         </div>
-      </div>
-    </Wrapper>
+    </div>
+  );
+  return href ? (
+    <a href={href} className="block">
+      {inner}
+    </a>
+  ) : (
+    inner
   );
 }
 
