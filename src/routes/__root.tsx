@@ -89,15 +89,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "elder companionship Kerala, senior companion service, elder care companion, companionship service Kottayam, senior support Kerala, companion for elderly",
       },
       { name: "author", content: "Bezyde" },
-      { property: "og:title", content: "Bezyde — Because Everyone Deserves Someone By Their Side" },
+      { property: "og:title", content: "Bezyde — Trusted Companionship for Seniors in Kottayam, Kerala" },
       {
         property: "og:description",
         content:
-          "Warm, trusted companionship visits for seniors in Kottayam, Kerala. Conversations, walks, errands and joyful moments — on a flexible monthly plan.",
+          "Bezyde provides trusted, background-verified companions for elderly people in Kottayam, Kerala. Reduce loneliness with recurring visits, walks, conversations and joyful company.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Bezyde" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Bezyde — Trusted Companionship for Seniors in Kottayam, Kerala" },
+      { name: "twitter:description", content: "Bezyde provides trusted, background-verified companions for elderly people in Kottayam, Kerala. Reduce loneliness with recurring visits, walks, conversations and joyful company." },
+      { property: "og:image", content: "/og-image.jpg" },
+      { name: "twitter:image", content: "/og-image.jpg" },
     ],
     links: [
       {
