@@ -763,25 +763,63 @@ function Pricing() {
         ))}
       </div>
 
-      {/* Add-On Services */}
+      {/* Optional Add-on Services */}
       <motion.div
         {...fadeUp}
         className="mt-16 rounded-[2rem] border border-border bg-card p-6 md:p-10"
       >
-        <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
-          <Sparkles className="h-4 w-4" />
-          Add-On Services
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+            <Sparkles className="h-4 w-4" />
+            Optional Add-on Services
+          </div>
+          <h3 className="mt-3 font-display text-2xl font-semibold text-foreground md:text-3xl">
+            Need a little extra support?
+          </h3>
+          <p className="mt-2 text-muted-foreground">
+            Add any of these services to your monthly plan whenever needed.
+          </p>
         </div>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {addOns.map((addon) => (
-            <div
-              key={addon.name}
-              className="rounded-2xl border border-border bg-secondary/60 p-4 text-center"
-            >
-              <div className="font-display text-2xl font-semibold text-foreground">{addon.price}</div>
-              <div className="mt-1 text-sm text-muted-foreground">{addon.name}</div>
-            </div>
-          ))}
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {addOns.map((addon, i) => {
+            const Icon = addon.icon;
+            return (
+              <motion.div
+                key={addon.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="flex flex-col rounded-2xl border border-border bg-secondary/50 p-5 transition hover:-translate-y-1 hover:shadow-card"
+              >
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary-soft text-primary">
+                  <Icon className="h-5.5 w-5.5" aria-hidden />
+                </div>
+                <h4 className="mt-4 text-base font-semibold text-foreground">{addon.name}</h4>
+                <p className="mt-1 flex-1 text-sm leading-relaxed text-muted-foreground">{addon.desc}</p>
+                <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-accent/15 px-3 py-1 text-sm font-semibold text-accent-foreground w-fit">
+                  {addon.price}
+                  <span className="text-xs font-normal text-accent-foreground/70">per visit</span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-border bg-secondary/40 p-6 text-center md:flex-row md:text-left">
+          <div className="flex-1">
+            <p className="font-medium text-foreground">Need something else?</p>
+            <p className="text-sm text-muted-foreground">
+              Contact us for a personalized solution that fits your family.
+            </p>
+          </div>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+          >
+            Talk to Us <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </motion.div>
 
