@@ -753,7 +753,7 @@ function Pricing() {
         </p>
       </motion.div>
 
-      <div className="mt-14 grid gap-6 md:grid-cols-2">
+      <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         {plans.map((p, i) => (
           <PlanCard key={p.name} plan={p} index={i} />
         ))}
