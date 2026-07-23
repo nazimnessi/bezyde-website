@@ -549,62 +549,217 @@ function Why() {
 
 const plans = [
   {
-    name: "Monthly Essential",
-    price: "₹4,999",
-    startingFrom: true,
-    tag: "Perfect for regular companionship and meaningful social interaction.",
-    features: [
-      "8 visits per month",
-      "Up to 2 hours per visit",
-      "Dedicated companion",
-      "Friendly conversations & activities",
-      "Light household assistance",
-      "Family updates when requested",
+    name: "Assure",
+    price: "₹6,499",
+    priceSuffix: "/month",
+    tag: "Steady company for an independent parent.",
+    desc: "Designed for seniors who are largely independent but would benefit from regular companionship, meaningful conversations, and the reassurance of a familiar face every week.",
+    popular: false,
+    schedule: [
+      { label: "Visits", value: "4–5 visits per month" },
+      { label: "Frequency", value: "Weekly visits" },
+      { label: "Duration", value: "1–1.5 hours per visit" },
     ],
-    cta: "Get Started",
-    highlight: false,
+    includes: [
+      "Dedicated Primary Companion for every visit",
+      "Warm conversations and emotional companionship",
+      "Tea-time chats, reading, board games, and walks",
+      "Light errands during visits",
+      "Same-day WhatsApp visit report",
+      "One consent-based photo after every visit",
+      "Dedicated Backup Companion",
+      "Emergency escalation protocol",
+      "Birthday and festival acknowledgements",
+    ],
+    bestFor: "Independent seniors who primarily need friendship, conversation, and regular social interaction.",
+    cta: "Choose Assure",
   },
   {
-    name: "Monthly Plus",
-    price: "₹8,999",
-    startingFrom: true,
-    tag: "Our most popular plan for families seeking consistent support and companionship.",
-    features: [
-      "16 visits per month",
-      "2–3 hours per visit",
-      "Priority companion matching",
+    name: "Care+",
+    price: "₹10,499",
+    priceSuffix: "/month",
+    tag: "Regular support and a dependable second set of eyes.",
+    desc: "Perfect for families looking for more frequent companionship, practical assistance, and greater peace of mind.",
+    popular: true,
+    schedule: [
+      { label: "Visits", value: "8–9 visits per month" },
+      { label: "Frequency", value: "Twice-weekly visits" },
+      { label: "Duration", value: "1–1.5 hours per visit" },
+    ],
+    includesPrefix: "Everything in Assure, plus",
+    includes: [
+      "Extended errands",
+      "Pharmacy pickups",
+      "Bill payment assistance",
+      "Light household support",
+      "Mid-week wellness phone check-in",
+      "Priority scheduling for additional services",
+      "Monthly wellbeing summary for families",
       "Flexible rescheduling",
-      "Weekly family updates",
-      "Outings, walks & appointments",
-      "Technology assistance",
-      "Personalized engagement activities",
     ],
-    cta: "Get Started",
-    highlight: true,
+    bestFor: "Parents who benefit from regular check-ins, assistance with everyday tasks, and closer family oversight.",
+    cta: "Choose Care+",
   },
   {
-    name: "Custom Plan",
-    price: "Talk to Us",
-    startingFrom: false,
-    tag: "Tailored companionship designed around your loved one's unique needs.",
-    features: [
-      "Any schedule you need",
-      "Specialized requests welcome",
-      "Multi-companion coverage",
-      "Dedicated relationship manager",
-      "Extended visit durations",
-      "Hospital & appointment accompaniment",
-      "Religious and community visits",
-      "Custom activity planning",
+    name: "Guardian",
+    price: "₹15,999",
+    priceSuffix: "/month",
+    tag: "Comprehensive companionship with greater reassurance.",
+    desc: "Created for seniors living alone or requiring frequent visits, mobility assistance, and ongoing support.",
+    popular: false,
+    schedule: [
+      { label: "Visits", value: "14–16 visits per month" },
+      { label: "Frequency", value: "3–4 visits every week" },
+      { label: "Escort", value: "One hospital or clinic escort included each month" },
     ],
-    cta: "Contact Us",
-    highlight: false,
+    includesPrefix: "Everything in Care+, plus",
+    includes: [
+      "One complimentary hospital or clinic escort every month",
+      "Home safety observations during every visit",
+      "Priority emergency response coordination",
+      "Partner clinic referral benefits",
+      "Companion continuity guarantee through familiar backup companions",
+    ],
+    bestFor: "Families seeking the highest level of regular companionship and reassurance without entering medical or nursing care.",
+    cta: "Choose Guardian",
+  },
+  {
+    name: "Signature Care",
+    price: "Talk to Us",
+    priceSuffix: "",
+    tag: "Personalized care for unique needs.",
+    desc: "Every family has unique needs. For seniors recovering from hospitalization or requiring near-daily companionship, we create a fully personalized care plan following a consultation.",
+    popular: false,
+    schedule: [],
+    includesPrefix: "May Include",
+    includes: [
+      "Near-daily visits",
+      "Multiple hospital escorts",
+      "Dedicated care coordination",
+      "Personalized schedules",
+      "Priority emergency response",
+      "Family-specific support planning",
+    ],
+    bestFor: "Seniors recovering from hospitalization or families needing near-daily, fully personalized companionship.",
+    cta: "Talk to Us",
   },
 ];
 
+const addOns = [
+  { name: "Extra Hospital Escort", price: "₹1,000" },
+  { name: "Festival or Special Occasion Visit", price: "₹800" },
+  { name: "Government Office Assistance", price: "₹600" },
+  { name: "Additional Companion Visit", price: "₹500" },
+];
+
+const everyPlanIncludes = [
+  "Police-verified companions",
+  "The same dedicated Primary Companion for every visit",
+  "A trained Backup Companion, ensuring uninterrupted service",
+  "Same-day WhatsApp visit reports",
+  "One consent-based visit photo for family reassurance",
+  "Emergency escalation protocol",
+  "Birthday and festival acknowledgements",
+  "Compassionate, respectful companionship focused on dignity and connection",
+];
+
+function PlanCard({ plan, index }: { plan: typeof plans[0]; index: number }) {
+  return (
+    <motion.div
+      key={plan.name}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className={`relative flex flex-col rounded-[2rem] border p-6 md:p-8 ${
+        plan.popular
+          ? "border-primary bg-primary text-primary-foreground shadow-soft lg:-translate-y-3 lg:scale-[1.01]"
+          : "border-border bg-card text-foreground"
+      }`}
+    >
+      {plan.popular && (
+        <span className="absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-accent px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent-foreground shadow-glow">
+          <Star className="h-3.5 w-3.5 fill-current" />
+          Most Popular
+        </span>
+      )}
+
+      <div className="flex-1">
+        <h3 className="font-display text-2xl font-semibold md:text-3xl">{plan.name}</h3>
+        <p className={`mt-2 text-sm leading-relaxed ${plan.popular ? "text-primary-foreground/85" : "text-muted-foreground"}`}>
+          {plan.tag}
+        </p>
+
+        <div className="mt-5 flex items-baseline gap-1">
+          <span className="font-display text-4xl font-semibold md:text-5xl">{plan.price}</span>
+          {plan.priceSuffix && (
+            <span className={`text-sm font-medium ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+              {plan.priceSuffix}
+            </span>
+          )}
+        </div>
+
+        <p className={`mt-4 text-sm leading-relaxed ${plan.popular ? "text-primary-foreground/85" : "text-muted-foreground"}`}>
+          {plan.desc}
+        </p>
+
+        {plan.schedule.length > 0 && (
+          <div className="mt-6 rounded-2xl border border-border/60 bg-background/40 p-4">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">
+              <CalendarClock className="h-4 w-4" />
+              Visit Schedule
+            </div>
+            <ul className="mt-3 space-y-2">
+              {plan.schedule.map((s) => (
+                <li key={s.label} className="flex items-start gap-2 text-sm">
+                  <span className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${plan.popular ? "bg-accent" : "bg-primary"}`} />
+                  <span>
+                    <span className="font-medium">{s.label}:</span> {s.value}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className="mt-6">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">
+            <Check className="h-4 w-4" />
+            {plan.includesPrefix || "What's Included"}
+          </div>
+          <ul className="mt-3 space-y-2.5">
+            {plan.includes.map((f) => (
+              <li key={f} className="flex items-start gap-2.5 text-sm leading-relaxed">
+                <Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.popular ? "text-accent" : "text-primary"}`} />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={`mt-6 rounded-2xl p-4 ${plan.popular ? "bg-primary-foreground/10" : "bg-secondary"}`}>
+          <div className="text-xs font-semibold uppercase tracking-wider text-foreground/70">Best For</div>
+          <p className="mt-1 text-sm leading-relaxed">{plan.bestFor}</p>
+        </div>
+      </div>
+
+      <a
+        href="#contact"
+        className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition ${
+          plan.popular
+            ? "bg-accent text-accent-foreground hover:opacity-90"
+            : "bg-primary text-primary-foreground hover:opacity-90"
+        }`}
+      >
+        {plan.cta} <ArrowRight className="h-4 w-4" />
+      </a>
+    </motion.div>
+  );
+}
+
 function Pricing() {
   return (
-    <Section id="pricing">
+    <Section id="pricing" className="bg-secondary/30">
       <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
         <Eyebrow>Simple pricing</Eyebrow>
         <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">
@@ -614,61 +769,65 @@ function Pricing() {
           Subscription based. No online payment. We'll help you pick what fits.
         </p>
       </motion.div>
-      <div className="mt-14 grid gap-6 lg:grid-cols-3">
+
+      <div className="mt-14 grid gap-6 md:grid-cols-2">
         {plans.map((p, i) => (
-          <motion.div
-            key={p.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className={`relative rounded-[2rem] border p-8 ${
-              p.highlight
-                ? "border-primary bg-primary text-primary-foreground shadow-soft lg:-translate-y-4 lg:scale-[1.02]"
-                : "border-border bg-card text-foreground"
-            }`}
-          >
-            {p.highlight && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent-foreground shadow-glow">
-                Most Popular
-              </span>
-            )}
-            <h3 className="font-display text-2xl font-semibold">{p.name}</h3>
-            <p className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-              {p.tag}
-            </p>
-            {p.startingFrom && (
-              <div className={`mt-6 text-sm font-medium ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                Starting from
-              </div>
-            )}
-            <div className="font-display text-5xl font-semibold">{p.price}</div>
-            {p.startingFrom && (
-              <div className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                per month
-              </div>
-            )}
-            <ul className="mt-8 space-y-3">
-              {p.features.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm">
-                  <Check className={`mt-0.5 h-4 w-4 ${p.highlight ? "text-accent" : "text-primary"}`} />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#contact"
-              className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition ${
-                p.highlight
-                  ? "bg-accent text-accent-foreground hover:opacity-90"
-                  : "bg-primary text-primary-foreground hover:opacity-90"
-              }`}
-            >
-              {p.cta} <ArrowRight className="h-4 w-4" />
-            </a>
-          </motion.div>
+          <PlanCard key={p.name} plan={p} index={i} />
         ))}
       </div>
+
+      {/* Add-On Services */}
+      <motion.div
+        {...fadeUp}
+        className="mt-16 rounded-[2rem] border border-border bg-card p-6 md:p-10"
+      >
+        <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+          <Sparkles className="h-4 w-4" />
+          Add-On Services
+        </div>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {addOns.map((addon) => (
+            <div
+              key={addon.name}
+              className="rounded-2xl border border-border bg-secondary/60 p-4 text-center"
+            >
+              <div className="font-display text-2xl font-semibold text-foreground">{addon.price}</div>
+              <div className="mt-1 text-sm text-muted-foreground">{addon.name}</div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Every Plan Includes */}
+      <motion.div
+        {...fadeUp}
+        className="mt-10 rounded-[2rem] border border-primary/20 bg-primary/5 p-6 md:p-10"
+      >
+        <h3 className="text-center font-display text-2xl font-semibold text-foreground md:text-3xl">
+          Every Bezyde Plan Includes
+        </h3>
+        <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
+          Every subscription—regardless of plan—includes our commitment to consistency, trust, and transparency.
+        </p>
+        <div className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
+          {everyPlanIncludes.map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <div className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
+                <Check className="h-3 w-3" />
+              </div>
+              <span className="text-sm leading-relaxed text-foreground/90">{item}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Disclaimer */}
+      <motion.p
+        {...fadeUp}
+        className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
+      >
+        Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
+      </motion.p>
     </Section>
   );
 }
