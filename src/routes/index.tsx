@@ -663,7 +663,7 @@ function PlanCard({ plan, index }: { plan: typeof plans[0]; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className={`relative flex flex-col rounded-[2rem] border p-6 md:p-8 ${
+      className={`relative flex flex-col rounded-[2rem] border p-5 md:p-6 ${
         plan.popular
           ? "border-primary bg-primary text-primary-foreground shadow-soft lg:-translate-y-3 lg:scale-[1.01]"
           : "border-border bg-card text-foreground"
@@ -677,13 +677,13 @@ function PlanCard({ plan, index }: { plan: typeof plans[0]; index: number }) {
       )}
 
       <div className="flex-1">
-        <h3 className="font-display text-2xl font-semibold md:text-3xl">{plan.name}</h3>
-        <p className={`mt-2 text-sm leading-relaxed ${plan.popular ? "text-primary-foreground/85" : "text-muted-foreground"}`}>
+        <h3 className="font-display text-xl font-semibold md:text-2xl">{plan.name}</h3>
+        <p className={`mt-1 text-sm leading-relaxed ${plan.popular ? "text-primary-foreground/85" : "text-muted-foreground"}`}>
           {plan.tag}
         </p>
 
-        <div className="mt-5 flex items-baseline gap-1">
-          <span className="font-display text-4xl font-semibold md:text-5xl">{plan.price}</span>
+        <div className="mt-4 flex items-baseline gap-1">
+          <span className="font-display text-3xl font-semibold md:text-4xl">{plan.price}</span>
           {plan.priceSuffix && (
             <span className={`text-sm font-medium ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
               {plan.priceSuffix}
@@ -691,17 +691,13 @@ function PlanCard({ plan, index }: { plan: typeof plans[0]; index: number }) {
           )}
         </div>
 
-        <p className={`mt-4 text-sm leading-relaxed ${plan.popular ? "text-primary-foreground/85" : "text-muted-foreground"}`}>
-          {plan.desc}
-        </p>
-
         {plan.schedule.length > 0 && (
-          <div className="mt-6 rounded-2xl border border-border/60 bg-background/40 p-4">
+          <div className="mt-4 rounded-2xl border border-border/60 bg-background/40 p-3">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">
               <CalendarClock className="h-4 w-4" />
               Visit Schedule
             </div>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-2 space-y-1.5">
               {plan.schedule.map((s) => (
                 <li key={s.label} className="flex items-start gap-2 text-sm">
                   <span className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${plan.popular ? "bg-accent" : "bg-primary"}`} />
@@ -714,30 +710,25 @@ function PlanCard({ plan, index }: { plan: typeof plans[0]; index: number }) {
           </div>
         )}
 
-        <div className="mt-6">
+        <div className="mt-4">
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">
             <Check className="h-4 w-4" />
             {plan.includesPrefix || "What's Included"}
           </div>
-          <ul className="mt-3 space-y-2.5">
+          <ul className="mt-2 space-y-1.5">
             {plan.includes.map((f) => (
-              <li key={f} className="flex items-start gap-2.5 text-sm leading-relaxed">
+              <li key={f} className="flex items-start gap-2 text-sm leading-relaxed">
                 <Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.popular ? "text-accent" : "text-primary"}`} />
                 <span>{f}</span>
               </li>
             ))}
           </ul>
         </div>
-
-        <div className={`mt-6 rounded-2xl p-4 ${plan.popular ? "bg-primary-foreground/10" : "bg-secondary"}`}>
-          <div className="text-xs font-semibold uppercase tracking-wider text-foreground/70">Best For</div>
-          <p className="mt-1 text-sm leading-relaxed">{plan.bestFor}</p>
-        </div>
       </div>
 
       <a
         href="#contact"
-        className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition ${
+        className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${
           plan.popular
             ? "bg-accent text-accent-foreground hover:opacity-90"
             : "bg-primary text-primary-foreground hover:opacity-90"
