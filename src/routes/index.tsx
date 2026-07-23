@@ -553,7 +553,6 @@ const plans = [
     price: "₹6,499",
     priceSuffix: "/month",
     tag: "Steady company for an independent parent.",
-    desc: "Designed for seniors who are largely independent but would benefit from regular companionship, meaningful conversations, and the reassurance of a familiar face every week.",
     popular: false,
     schedule: [
       { label: "Visits", value: "4–5 visits per month" },
@@ -571,7 +570,6 @@ const plans = [
       "Emergency escalation protocol",
       "Birthday and festival acknowledgements",
     ],
-    bestFor: "Independent seniors who primarily need friendship, conversation, and regular social interaction.",
     cta: "Choose Assure",
   },
   {
@@ -579,7 +577,6 @@ const plans = [
     price: "₹10,499",
     priceSuffix: "/month",
     tag: "Regular support and a dependable second set of eyes.",
-    desc: "Perfect for families looking for more frequent companionship, practical assistance, and greater peace of mind.",
     popular: true,
     schedule: [
       { label: "Visits", value: "8–9 visits per month" },
@@ -597,7 +594,6 @@ const plans = [
       "Monthly wellbeing summary for families",
       "Flexible rescheduling",
     ],
-    bestFor: "Parents who benefit from regular check-ins, assistance with everyday tasks, and closer family oversight.",
     cta: "Choose Care+",
   },
   {
@@ -605,7 +601,6 @@ const plans = [
     price: "₹15,999",
     priceSuffix: "/month",
     tag: "Comprehensive companionship with greater reassurance.",
-    desc: "Created for seniors living alone or requiring frequent visits, mobility assistance, and ongoing support.",
     popular: false,
     schedule: [
       { label: "Visits", value: "14–16 visits per month" },
@@ -620,7 +615,6 @@ const plans = [
       "Partner clinic referral benefits",
       "Companion continuity guarantee through familiar backup companions",
     ],
-    bestFor: "Families seeking the highest level of regular companionship and reassurance without entering medical or nursing care.",
     cta: "Choose Guardian",
   },
   {
@@ -628,7 +622,6 @@ const plans = [
     price: "Talk to Us",
     priceSuffix: "",
     tag: "Personalized care for unique needs.",
-    desc: "Every family has unique needs. For seniors recovering from hospitalization or requiring near-daily companionship, we create a fully personalized care plan following a consultation.",
     popular: false,
     schedule: [],
     includesPrefix: "May Include",
@@ -640,7 +633,6 @@ const plans = [
       "Priority emergency response",
       "Family-specific support planning",
     ],
-    bestFor: "Seniors recovering from hospitalization or families needing near-daily, fully personalized companionship.",
     cta: "Talk to Us",
   },
 ];
