@@ -28,6 +28,10 @@ import {
   X,
   Star,
   ChevronDown,
+  Hospital,
+  Building2,
+  PartyPopper,
+  UserPlus,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-companion.jpg";
