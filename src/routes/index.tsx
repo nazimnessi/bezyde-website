@@ -642,10 +642,10 @@ const plans = [
 ];
 
 const addOns = [
-  { name: "Extra Hospital Escort", price: "₹1,000" },
-  { name: "Festival or Special Occasion Visit", price: "₹800" },
-  { name: "Government Office Assistance", price: "₹600" },
-  { name: "Additional Companion Visit", price: "₹500" },
+  { name: "Hospital or Clinic Escort", price: "From ₹1,000", icon: Hospital, desc: "A trusted companion by your side for hospital or clinic visits." },
+  { name: "Government Office Assistance", price: "From ₹600", icon: Building2, desc: "Help with paperwork, queues, and errands at government offices." },
+  { name: "Festival or Special Occasion Visit", price: "From ₹800", icon: PartyPopper, desc: "Company during birthdays, festivals, or family celebrations." },
+  { name: "Additional Companion Visit", price: "From ₹500", icon: UserPlus, desc: "An extra visit whenever you need a little more companionship." },
 ];
 
 const everyPlanIncludes = [
