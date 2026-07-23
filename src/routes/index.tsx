@@ -550,35 +550,52 @@ function Why() {
 const plans = [
   {
     name: "Monthly Essential",
-    price: "₹ —",
-    tag: "Perfect for regular companionship",
-    features: ["8 visits per month", "2 hours per visit", "Dedicated companion", "Family updates"],
+    price: "₹4,999",
+    startingFrom: true,
+    tag: "Perfect for regular companionship and meaningful social interaction.",
+    features: [
+      "8 visits per month",
+      "Up to 2 hours per visit",
+      "Dedicated companion",
+      "Friendly conversations & activities",
+      "Light household assistance",
+      "Family updates when requested",
+    ],
     cta: "Get Started",
     highlight: false,
   },
   {
     name: "Monthly Plus",
-    price: "₹ —",
-    tag: "Most families choose this",
+    price: "₹8,999",
+    startingFrom: true,
+    tag: "Our most popular plan for families seeking consistent support and companionship.",
     features: [
       "16 visits per month",
       "2–3 hours per visit",
       "Priority companion matching",
       "Flexible rescheduling",
-      "Weekly family reports",
+      "Weekly family updates",
+      "Outings, walks & appointments",
+      "Technology assistance",
+      "Personalized engagement activities",
     ],
     cta: "Get Started",
     highlight: true,
   },
   {
     name: "Custom Plan",
-    price: "Talk to us",
-    tag: "Tailored to your loved one",
+    price: "Talk to Us",
+    startingFrom: false,
+    tag: "Tailored companionship designed around your loved one's unique needs.",
     features: [
       "Any schedule you need",
-      "Specialised requests welcome",
+      "Specialized requests welcome",
       "Multi-companion coverage",
-      "Dedicated care manager",
+      "Dedicated relationship manager",
+      "Extended visit durations",
+      "Hospital & appointment accompaniment",
+      "Religious and community visits",
+      "Custom activity planning",
     ],
     cta: "Contact Us",
     highlight: false,
@@ -620,10 +637,17 @@ function Pricing() {
             <p className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
               {p.tag}
             </p>
-            <div className="mt-6 font-display text-5xl font-semibold">{p.price}</div>
-            <div className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-              per month
-            </div>
+            {p.startingFrom && (
+              <div className={`mt-6 text-sm font-medium ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                Starting from
+              </div>
+            )}
+            <div className="font-display text-5xl font-semibold">{p.price}</div>
+            {p.startingFrom && (
+              <div className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                per month
+              </div>
+            )}
             <ul className="mt-8 space-y-3">
               {p.features.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm">
