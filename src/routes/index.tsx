@@ -637,10 +637,17 @@ function Pricing() {
             <p className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
               {p.tag}
             </p>
-            <div className="mt-6 font-display text-5xl font-semibold">{p.price}</div>
-            <div className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-              per month
-            </div>
+            {p.startingFrom && (
+              <div className={`mt-6 text-sm font-medium ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                Starting from
+              </div>
+            )}
+            <div className="font-display text-5xl font-semibold">{p.price}</div>
+            {p.startingFrom && (
+              <div className={`mt-1 text-sm ${p.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                per month
+              </div>
+            )}
             <ul className="mt-8 space-y-3">
               {p.features.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm">
