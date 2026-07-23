@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   HeartHandshake,
   CalendarClock,
+  Camera,
   Sparkles,
   MapPin,
   ArrowRight,
@@ -29,6 +30,7 @@ import {
   Star,
   ChevronDown,
   Hospital,
+  Heart,
   Building2,
   PartyPopper,
   UserPlus,
@@ -568,8 +570,6 @@ const plans = [
       "Warm conversations and emotional companionship",
       "Tea-time chats, reading, board games, and walks",
       "Light errands during visits",
-      "Same-day WhatsApp visit report",
-      "One consent-based photo after every visit",
       "Dedicated Backup Companion",
       "Emergency escalation protocol",
       "Birthday and festival acknowledgements",
@@ -595,7 +595,6 @@ const plans = [
       "Light household support",
       "Mid-week wellness phone check-in",
       "Priority scheduling for additional services",
-      "Monthly wellbeing summary for families",
       "Flexible rescheduling",
     ],
     cta: "Choose Care+",
@@ -609,11 +608,9 @@ const plans = [
     schedule: [
       { label: "Visits", value: "14–16 visits per month" },
       { label: "Frequency", value: "3–4 visits every week" },
-      { label: "Escort", value: "One hospital or clinic escort included each month" },
     ],
     includesPrefix: "Everything in Care+, plus",
     includes: [
-      "One complimentary hospital or clinic escort every month",
       "Home safety observations during every visit",
       "Priority emergency response coordination",
       "Partner clinic referral benefits",
@@ -648,15 +645,42 @@ const addOns = [
   { name: "Additional Companion Visit", price: "From ₹500", icon: UserPlus, desc: "An extra visit whenever you need a little more companionship." },
 ];
 
-const everyPlanIncludes = [
-  "Police-verified companions",
-  "The same dedicated Primary Companion for every visit",
-  "A trained Backup Companion, ensuring uninterrupted service",
-  "Same-day WhatsApp visit reports",
-  "One consent-based visit photo for family reassurance",
-  "Emergency escalation protocol",
-  "Birthday and festival acknowledgements",
-  "Compassionate, respectful companionship focused on dignity and connection",
+const bezydePromise = [
+  {
+    title: "Trust First",
+    desc: "Every companion is police verified before joining Bezyde.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "A Familiar Face",
+    desc: "You'll see the same Primary Companion every visit, helping build genuine relationships.",
+    icon: Users,
+  },
+  {
+    title: "Always Covered",
+    desc: "If your companion is unavailable, a familiar Backup Companion is ready to step in.",
+    icon: HeartHandshake,
+  },
+  {
+    title: "Stay Connected",
+    desc: "Receive a WhatsApp update after every visit so you're always informed.",
+    icon: MessageCircle,
+  },
+  {
+    title: "Peace of Mind",
+    desc: "With your loved one's consent, we'll share a visit photo after each visit.",
+    icon: Camera,
+  },
+  {
+    title: "Ready When Needed",
+    desc: "Our emergency escalation protocol ensures families are informed if something unexpected happens.",
+    icon: Phone,
+  },
+  {
+    title: "Companionship With Dignity",
+    desc: "Every interaction is built on kindness, patience, respect, and meaningful human connection.",
+    icon: Heart,
+  },
 ];
 
 function PlanCard({ plan, index }: { plan: typeof plans[0]; index: number }) {
@@ -715,14 +739,13 @@ function PlanCard({ plan, index }: { plan: typeof plans[0]; index: number }) {
         )}
 
         <div className="mt-4">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">
-            <Check className="h-4 w-4" />
+          <div className="text-xs font-semibold uppercase tracking-wider text-foreground/70">
             {plan.includesPrefix || "What's Included"}
           </div>
           <ul className="mt-2 space-y-1.5">
             {plan.includes.map((f) => (
               <li key={f} className="flex items-start gap-2 text-sm leading-relaxed">
-                <Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.popular ? "text-accent" : "text-primary"}`} />
+                <span className={`mt-2 h-1 w-1 shrink-0 rounded-full ${plan.popular ? "bg-accent" : "bg-primary"}`} />
                 <span>{f}</span>
               </li>
             ))}
@@ -823,26 +846,45 @@ function Pricing() {
         </div>
       </motion.div>
 
-      {/* Every Plan Includes */}
+      {/* The Bezyde Promise */}
       <motion.div
         {...fadeUp}
         className="mt-10 rounded-[2rem] border border-primary/20 bg-primary/5 p-6 md:p-10"
       >
-        <h3 className="text-center font-display text-2xl font-semibold text-foreground md:text-3xl">
-          Every Bezyde Plan Includes
-        </h3>
-        <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-          Every subscription—regardless of plan—includes our commitment to consistency, trust, and transparency.
-        </p>
-        <div className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-          {everyPlanIncludes.map((item) => (
-            <div key={item} className="flex items-start gap-3">
-              <div className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-                <Check className="h-3 w-3" />
-              </div>
-              <span className="text-sm leading-relaxed text-foreground/90">{item}</span>
-            </div>
-          ))}
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+            <Star className="h-4 w-4 fill-current" />
+            The Bezyde Promise
+          </div>
+          <h3 className="mt-3 font-display text-2xl font-semibold text-foreground md:text-3xl">
+            No matter which plan you choose, these are our promises to every family.
+          </h3>
+          <div className="mt-3 inline-flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+            ))}
+          </div>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {bezydePromise.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="rounded-2xl border border-border bg-card p-6 shadow-soft"
+              >
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary-soft text-primary">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </div>
+                <h4 className="mt-4 text-base font-semibold text-foreground">{item.title}</h4>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
 
