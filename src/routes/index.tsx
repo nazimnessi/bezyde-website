@@ -556,7 +556,7 @@ function Why() {
 const plans = [
   {
     name: "Assure",
-    price: "₹6,499",
+    price: "₹6,999",
     priceSuffix: "/month",
     tag: "Steady company for an independent parent.",
     popular: false,
@@ -578,7 +578,7 @@ const plans = [
   },
   {
     name: "Care+",
-    price: "₹10,499",
+    price: "₹10,999",
     priceSuffix: "/month",
     tag: "Regular support and a dependable second set of eyes.",
     popular: true,
@@ -601,7 +601,7 @@ const plans = [
   },
   {
     name: "Guardian",
-    price: "₹15,999",
+    price: "₹16,499",
     priceSuffix: "/month",
     tag: "Comprehensive companionship with greater reassurance.",
     popular: false,
