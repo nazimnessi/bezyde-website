@@ -58,11 +58,11 @@ export const Route = createFileRoute("/")({
           "@type": "LocalBusiness",
           name: "Bezyde",
           description:
-            "Companionship service for elderly people in Kottayam, Kerala.",
-          areaServed: "Kottayam, Kerala, India",
+            "Companionship service for elderly people in Pathanamthitta, Kerala.",
+          areaServed: "Pathanamthitta, Kerala, India",
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Kottayam",
+            addressLocality: "Pathanamthitta",
             addressRegion: "Kerala",
             addressCountry: "IN",
           },
@@ -272,7 +272,7 @@ function Hero() {
                     <Star key={i} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <p className="text-xs">Loved by families across Kottayam</p>
+                <p className="text-xs">Loved by families across Pathanamthitta</p>
               </div>
             </div>
           </motion.div>
@@ -329,7 +329,7 @@ const trust = [
   "Background Verified Companions",
   "Compassionately Trained",
   "Flexible Monthly Plans",
-  "Serving Kottayam",
+  "Serving Pathanamthitta",
   "Expanding Soon",
 ];
 
@@ -922,7 +922,7 @@ const testimonials = [
     quote:
       "My morning walks used to feel long and quiet. Now I have a friend who listens to my stories and shares his own. It's the best hour of my day.",
     name: "K.V. Thomas",
-    role: "78 · Kottayam",
+    role: "78 · Pathanamthitta",
   },
   {
     quote:
@@ -997,7 +997,7 @@ const faqs = [
   },
   {
     q: "Which locations do you currently serve?",
-    a: "We're based in Kottayam, Kerala, and are expanding to more cities in Kerala very soon.",
+    a: "We're based in Pathanamthitta, Kerala, and are expanding to more cities in Kerala very soon.",
   },
   {
     q: "Can I cancel my subscription?",
@@ -1146,7 +1146,7 @@ function Contact() {
           <ContactCard
             icon={MapPin}
             title="Office"
-            text="MC Road, Kottayam, Kerala 686001"
+            text="MC Road, Pathanamthitta, Kerala 686001"
           />
           <ContactCard
             icon={Clock}
@@ -1155,8 +1155,8 @@ function Contact() {
           />
           <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
             <iframe
-              title="Bezyde office location in Kottayam"
-              src="https://www.google.com/maps?q=Kottayam,Kerala&output=embed"
+              title="Bezyde office location in Pathanamthitta"
+              src="https://www.google.com/maps?q=Pathanamthitta,Kerala&output=embed"
               className="h-72 w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -1233,7 +1233,7 @@ function Footer() {
           <Logo />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
             Bezyde brings trusted, caring companions to elderly people across
-            Kottayam, Kerala. Because everyone deserves someone by their side.
+            Pathanamthitta, Kerala. Because everyone deserves someone by their side.
           </p>
           <div className="mt-6 flex gap-3">
             <a
@@ -1278,7 +1278,7 @@ function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>+91 8136979757</li>
             <li>hello@bezyde.com</li>
-            <li>MC Road, Kottayam, Kerala</li>
+            <li>MC Road, Pathanamthitta, Kerala</li>
             <li>Mon–Sat · 8 AM – 8 PM</li>
           </ul>
         </div>
