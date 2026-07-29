@@ -34,6 +34,9 @@ import {
   Building2,
   PartyPopper,
   UserPlus,
+  Instagram,
+  Facebook,
+  Twitter,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-companion.jpg";
@@ -63,7 +66,7 @@ export const Route = createFileRoute("/")({
             addressRegion: "Kerala",
             addressCountry: "IN",
           },
-          telephone: "+91 90000 00000",
+          telephone: "+91 8136979757",
         }),
       },
     ],
@@ -1131,7 +1134,7 @@ function Contact() {
         </motion.div>
 
         <motion.div {...fadeUp} className="space-y-4">
-          <ContactCard icon={Phone} title="Phone" text="+91 90000 00000" href="tel:+919000000000" />
+          <ContactCard icon={Phone} title="Phone" text="+91 8136979757" href="tel:+918136979757" />
           <ContactCard icon={Mail} title="Email" text="hello@bezyde.com" href="mailto:hello@bezyde.com" />
           <ContactCard
             icon={MapPin}
@@ -1226,16 +1229,29 @@ function Footer() {
             Kottayam, Kerala. Because everyone deserves someone by their side.
           </p>
           <div className="mt-6 flex gap-3">
-            {["Instagram", "Facebook", "WhatsApp"].map((s) => (
-              <a
-                key={s}
-                href="#"
-                aria-label={s}
-                className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground/70 transition hover:border-primary hover:text-primary"
-              >
-                <span className="text-xs font-semibold">{s[0]}</span>
-              </a>
-            ))}
+            <a
+              href="https://www.instagram.com/_bezide_?igsh=ZG51Znk3MHdzYTJ0"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground/70 transition hover:border-primary hover:text-primary"
+            >
+              <Instagram className="h-5 w-5" aria-hidden />
+            </a>
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground/70 transition hover:border-primary hover:text-primary"
+            >
+              <Facebook className="h-5 w-5" aria-hidden />
+            </a>
+            <a
+              href="#"
+              aria-label="X"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground/70 transition hover:border-primary hover:text-primary"
+            >
+              <Twitter className="h-5 w-5" aria-hidden />
+            </a>
           </div>
         </div>
         <div>
@@ -1253,7 +1269,7 @@ function Footer() {
         <div>
           <h4 className="font-display text-lg font-semibold text-foreground">Contact</h4>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li>+91 90000 00000</li>
+            <li>+91 8136979757</li>
             <li>hello@bezyde.com</li>
             <li>MC Road, Kottayam, Kerala</li>
             <li>Mon–Sat · 8 AM – 8 PM</li>
@@ -1278,7 +1294,7 @@ function Footer() {
 function WhatsAppFab() {
   return (
     <a
-      href="https://wa.me/919000000000?text=Hi%20Bezyde%2C%20I%27d%20like%20to%20know%20more%20about%20your%20companionship%20service."
+      href="https://wa.me/918136979757?text=Hi%20Bezyde%2C%20I%27d%20like%20to%20know%20more%20about%20your%20companionship%20service."
       target="_blank"
       rel="noreferrer"
       aria-label="Chat with Bezyde on WhatsApp"
@@ -1305,7 +1321,7 @@ function Landing() {
         <HowItWorks />
         <Why />
         <Pricing />
-        <Testimonials />
+        
         <Faq />
         <FinalCta />
         <Contact />
