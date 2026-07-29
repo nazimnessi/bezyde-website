@@ -452,17 +452,17 @@ function Services() {
       </div>
     </Section>
 
-      {/* Disclaimer */}
-      <section className="pb-8 md:pb-12 -mt-8 md:-mt-12">
-        <div className="container-wide">
-          <motion.p
-            {...fadeUp}
-            className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
-          >
-            Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
-          </motion.p>
-        </div>
-      </section>
+    {/* Disclaimer */}
+    <section className="-mt-8 pb-8 md:-mt-12 md:pb-12">
+      <div className="container-wide">
+        <motion.p
+          {...fadeUp}
+          className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
+        >
+          Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
+        </motion.p>
+      </div>
+    </section>
   );
 }
 
