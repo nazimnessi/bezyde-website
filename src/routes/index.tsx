@@ -891,13 +891,6 @@ function Pricing() {
         </div>
       </motion.div>
 
-      {/* Disclaimer */}
-      <motion.p
-        {...fadeUp}
-        className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
-      >
-        Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
-      </motion.p>
     </Section>
   );
 }
