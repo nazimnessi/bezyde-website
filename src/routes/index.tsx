@@ -420,49 +420,51 @@ const services = [
 
 function Services() {
   return (
-    <Section id="services" className="bg-secondary/50">
-      <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
-        <Eyebrow>What we do</Eyebrow>
-        <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          Small acts of company. Big moments of joy.
-        </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
-          From heartfelt conversations to daily walks, our companions bring
-          warmth to the moments that matter.
-        </p>
-      </motion.div>
+    <>
+      <Section id="services" className="bg-secondary/50">
+        <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
+          <Eyebrow>What we do</Eyebrow>
+          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">
+            Small acts of company. Big moments of joy.
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            From heartfelt conversations to daily walks, our companions bring
+            warmth to the moments that matter.
+          </p>
+        </motion.div>
 
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {services.map(({ icon: Icon, title, desc }, i) => (
-          <motion.div
-            key={title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.45, delay: i * 0.03 }}
-            className="group rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-card"
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {services.map(({ icon: Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.45, delay: i * 0.03 }}
+              className="group rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-card"
+            >
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                <Icon className="h-6 w-6" aria-hidden />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Disclaimer */}
+      <section className="-mt-8 pb-8 md:-mt-12 md:pb-12">
+        <div className="container-wide">
+          <motion.p
+            {...fadeUp}
+            className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
           >
-            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
-              <Icon className="h-6 w-6" aria-hidden />
-            </div>
-            <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-          </motion.div>
-        ))}
-      </div>
-    </Section>
-
-    {/* Disclaimer */}
-    <section className="-mt-8 pb-8 md:-mt-12 md:pb-12">
-      <div className="container-wide">
-        <motion.p
-          {...fadeUp}
-          className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
-        >
-          Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
-        </motion.p>
-      </div>
-    </section>
+            Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
+          </motion.p>
+        </div>
+      </section>
+    </>
   );
 }
 
