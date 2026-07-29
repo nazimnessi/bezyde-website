@@ -58,11 +58,11 @@ export const Route = createFileRoute("/")({
           "@type": "LocalBusiness",
           name: "Bezyde",
           description:
-            "Companionship service for elderly people in Kottayam, Kerala.",
-          areaServed: "Kottayam, Kerala, India",
+            "Companionship service for elderly people in Pathanamthitta, Kerala.",
+          areaServed: "Pathanamthitta, Kerala, India",
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Kottayam",
+            addressLocality: "Pathanamthitta",
             addressRegion: "Kerala",
             addressCountry: "IN",
           },
@@ -272,7 +272,7 @@ function Hero() {
                     <Star key={i} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <p className="text-xs">Loved by families across Kottayam</p>
+                <p className="text-xs">Loved by families across Pathanamthitta</p>
               </div>
             </div>
           </motion.div>
@@ -329,7 +329,7 @@ const trust = [
   "Background Verified Companions",
   "Compassionately Trained",
   "Flexible Monthly Plans",
-  "Serving Kottayam",
+  "Serving Pathanamthitta",
   "Expanding Soon",
 ];
 
@@ -420,37 +420,51 @@ const services = [
 
 function Services() {
   return (
-    <Section id="services" className="bg-secondary/50">
-      <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
-        <Eyebrow>What we do</Eyebrow>
-        <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          Small acts of company. Big moments of joy.
-        </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
-          From heartfelt conversations to daily walks, our companions bring
-          warmth to the moments that matter.
-        </p>
-      </motion.div>
+    <>
+      <Section id="services" className="bg-secondary/50">
+        <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
+          <Eyebrow>What we do</Eyebrow>
+          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">
+            Small acts of company. Big moments of joy.
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            From heartfelt conversations to daily walks, our companions bring
+            warmth to the moments that matter.
+          </p>
+        </motion.div>
 
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {services.map(({ icon: Icon, title, desc }, i) => (
-          <motion.div
-            key={title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.45, delay: i * 0.03 }}
-            className="group rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-card"
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {services.map(({ icon: Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.45, delay: i * 0.03 }}
+              className="group rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-card"
+            >
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                <Icon className="h-6 w-6" aria-hidden />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Disclaimer */}
+      <section className="-mt-8 pb-8 md:-mt-12 md:pb-12">
+        <div className="container-wide">
+          <motion.p
+            {...fadeUp}
+            className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
           >
-            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
-              <Icon className="h-6 w-6" aria-hidden />
-            </div>
-            <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-          </motion.div>
-        ))}
-      </div>
-    </Section>
+            Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
+          </motion.p>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -891,13 +905,6 @@ function Pricing() {
         </div>
       </motion.div>
 
-      {/* Disclaimer */}
-      <motion.p
-        {...fadeUp}
-        className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
-      >
-        Please note: Bezyde provides companionship services only. We do not offer medical care, nursing services, cash handling, or overnight stays.
-      </motion.p>
     </Section>
   );
 }
@@ -915,7 +922,7 @@ const testimonials = [
     quote:
       "My morning walks used to feel long and quiet. Now I have a friend who listens to my stories and shares his own. It's the best hour of my day.",
     name: "K.V. Thomas",
-    role: "78 · Kottayam",
+    role: "78 · Pathanamthitta",
   },
   {
     quote:
@@ -990,7 +997,7 @@ const faqs = [
   },
   {
     q: "Which locations do you currently serve?",
-    a: "We're based in Kottayam, Kerala, and are expanding to more cities in Kerala very soon.",
+    a: "We're based in Pathanamthitta, Kerala, and are expanding to more cities in Kerala very soon.",
   },
   {
     q: "Can I cancel my subscription?",
@@ -1139,7 +1146,7 @@ function Contact() {
           <ContactCard
             icon={MapPin}
             title="Office"
-            text="MC Road, Kottayam, Kerala 686001"
+            text="MC Road, Pathanamthitta, Kerala 686001"
           />
           <ContactCard
             icon={Clock}
@@ -1148,8 +1155,8 @@ function Contact() {
           />
           <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
             <iframe
-              title="Bezyde office location in Kottayam"
-              src="https://www.google.com/maps?q=Kottayam,Kerala&output=embed"
+              title="Bezyde office location in Pathanamthitta"
+              src="https://www.google.com/maps?q=Pathanamthitta,Kerala&output=embed"
               className="h-72 w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -1226,7 +1233,7 @@ function Footer() {
           <Logo />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
             Bezyde brings trusted, caring companions to elderly people across
-            Kottayam, Kerala. Because everyone deserves someone by their side.
+            Pathanamthitta, Kerala. Because everyone deserves someone by their side.
           </p>
           <div className="mt-6 flex gap-3">
             <a
@@ -1271,7 +1278,7 @@ function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>+91 8136979757</li>
             <li>hello@bezyde.com</li>
-            <li>MC Road, Kottayam, Kerala</li>
+            <li>MC Road, Pathanamthitta, Kerala</li>
             <li>Mon–Sat · 8 AM – 8 PM</li>
           </ul>
         </div>
