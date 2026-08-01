@@ -1190,11 +1190,13 @@ function Field({
   name,
   type = "text",
   placeholder,
+  required = false,
 }: {
   label: string;
   name: string;
   type?: string;
   placeholder?: string;
+  required?: boolean;
 }) {
   return (
     <label className="block">
@@ -1203,6 +1205,7 @@ function Field({
         type={type}
         name={name}
         placeholder={placeholder}
+        required={required}
         className="w-full rounded-2xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/15"
       />
     </label>
