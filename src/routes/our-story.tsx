@@ -10,7 +10,8 @@ import visitImg from "@/assets/story-companion-visit.jpg";
 
 const TITLE = "Our Story — How Bezyde Began | Bezyde";
 const DESC =
-  "One afternoon, a cup of tea and a man in his seventies who simply wanted someone to talk to. This is the story behind Bezyde's companionship service in Pathanamthitta, Kerala.";
+  "A cup of tea and a man in his seventies who wanted someone to talk to: the story behind Bezyde's companionship service in Pathanamthitta, Kerala.";
+const STORY_IMAGE = "https://bezyde-by-your-side.lovable.app/og-image.jpg";
 
 export const Route = createFileRoute("/our-story")({
   head: () => ({
@@ -21,9 +22,26 @@ export const Route = createFileRoute("/our-story")({
       { property: "og:description", content: DESC },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://bezyde-by-your-side.lovable.app/our-story" },
+      { property: "og:image", content: STORY_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: STORY_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://bezyde-by-your-side.lovable.app/our-story" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "Our Story — How Bezyde Began",
+          description: DESC,
+          image: STORY_IMAGE,
+          author: { "@type": "Organization", name: "Bezyde" },
+          publisher: { "@type": "Organization", name: "Bezyde" },
+          mainEntityOfPage: "https://bezyde-by-your-side.lovable.app/our-story",
+        }),
+      },
+    ],
   }),
   component: OurStory,
 });
@@ -105,11 +123,11 @@ function OurStory() {
                 Our Story
               </span>
               <h1 className="mt-5 font-display text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-                “Nobody drives it anymore,” he said.
+                Our Story — How Bezyde Began
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-                Running his hand along the dusty bonnet like he was apologizing to the
-                car itself.
+                “Nobody drives it anymore,” he said — running his hand along the dusty
+                bonnet like he was apologizing to the car itself.
               </p>
             </motion.div>
           </div>

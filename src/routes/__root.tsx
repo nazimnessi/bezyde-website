@@ -77,31 +77,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Bezyde" },
+      { title: "Bezyde — Elder Companionship in Pathanamthitta" },
       {
         name: "description",
         content:
-          "Bezyde provides trusted, background-verified companions for elderly people in Kottayam, Kerala. Reduce loneliness with recurring visits, walks, conversations and joyful company.",
+          "Trusted, police-verified companions for elderly parents in Pathanamthitta, Kerala. Recurring visits, walks and warm conversation.",
       },
       {
         name: "keywords",
         content:
-          "elder companionship Kerala, senior companion service, elder care companion, companionship service Kottayam, senior support Kerala, companion for elderly",
+          "elder companionship Kerala, senior companion service, elder care companion, companionship service Pathanamthitta, senior support Kerala, companion for elderly",
       },
       { name: "author", content: "Bezyde" },
-      { property: "og:title", content: "Bezyde — Trusted Companionship for Seniors in Kottayam, Kerala" },
+      { property: "og:title", content: "Bezyde — Trusted Companionship for Seniors in Pathanamthitta" },
       {
         property: "og:description",
         content:
-          "Bezyde provides trusted, background-verified companions for elderly people in Kottayam, Kerala. Reduce loneliness with recurring visits, walks, conversations and joyful company.",
+          "Trusted, police-verified companions for elderly parents in Pathanamthitta, Kerala. Recurring visits, walks and warm conversation.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Bezyde" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Bezyde — Trusted Companionship for Seniors in Kottayam, Kerala" },
-      { name: "twitter:description", content: "Bezyde provides trusted, background-verified companions for elderly people in Kottayam, Kerala. Reduce loneliness with recurring visits, walks, conversations and joyful company." },
-      { property: "og:image", content: "/og-image.jpg" },
-      { name: "twitter:image", content: "/og-image.jpg" },
+      { name: "twitter:title", content: "Bezyde — Trusted Companionship for Seniors in Pathanamthitta" },
+      {
+        name: "twitter:description",
+        content:
+          "Trusted, police-verified companions for elderly parents in Pathanamthitta, Kerala. Recurring visits, walks and warm conversation.",
+      },
     ],
     links: [
       {
@@ -114,6 +116,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Bezyde",
+          url: "https://bezyde-by-your-side.lovable.app",
+          description:
+            "Trusted companionship visits for elderly parents in Pathanamthitta, Kerala.",
+        }),
       },
     ],
   }),

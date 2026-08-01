@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bezyde-by-your-side.lovable.app/sitemap.xml
