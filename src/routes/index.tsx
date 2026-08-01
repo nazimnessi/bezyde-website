@@ -49,9 +49,17 @@ import { SiteNav, navLinks } from "@/components/SiteNav";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { property: "og:image", content: "/og-image.jpg" },
+      {
+        property: "og:image",
+        content: "https://bezyde-by-your-side.lovable.app/og-image.jpg",
+      },
+      {
+        name: "twitter:image",
+        content: "https://bezyde-by-your-side.lovable.app/og-image.jpg",
+      },
+      { property: "og:url", content: "https://bezyde-by-your-side.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://bezyde-by-your-side.lovable.app/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -121,23 +129,21 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 grain-bg opacity-70" aria-hidden />
       <div className="container-wide relative">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <div>
             <Eyebrow>Companionship, delivered with care</Eyebrow>
-            <h1 className="mt-5 text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-              Because everyone deserves{" "}
+            <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              Trusted companionship for seniors in{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-primary">someone</span>
+                <span className="relative z-10 text-primary">Pathanamthitta</span>
                 <span
                   className="absolute inset-x-0 bottom-1 -z-0 h-3 rounded-full bg-accent/50 md:bottom-2 md:h-4"
                   aria-hidden
                 />
-              </span>{" "}
-              by their side.
+              </span>
             </h1>
+            <p className="mt-4 font-display text-xl text-foreground/70 md:text-2xl">
+              Because everyone deserves someone by their side.
+            </p>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
               Helping seniors enjoy meaningful companionship through trusted, recurring
               visits that bring comfort, conversation, and joy.
@@ -154,7 +160,7 @@ function Hero() {
                 href="#how"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-base font-semibold text-foreground transition hover:bg-secondary"
               >
-                Learn More
+                See how our companionship visits work
               </a>
             </div>
             <div className="mt-10 flex items-center gap-4 text-sm text-muted-foreground">
@@ -178,7 +184,7 @@ function Hero() {
                 <p className="text-xs">Loved by families across Pathanamthitta</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           <motion.div style={{ y }} className="relative">
             <div className="relative">
