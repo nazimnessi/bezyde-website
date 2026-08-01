@@ -8,15 +8,18 @@ import portraitImg from "@/assets/portrait-senior.jpg";
 import readingImg from "@/assets/reading-together.jpg";
 import { SiteNav } from "@/components/SiteNav";
 import { Section, Eyebrow, fadeUp } from "@/components/site/shared";
-import { plans, problems } from "@/components/site/data";
+import { problems } from "@/components/site/data";
 import {
   BezydePromise,
+  Contact,
   Faq,
   FinalCta,
   Footer,
   HowItWorks,
+  PlansGrid,
   ServicesGrid,
   TrustBar,
+  Why,
   WhatsAppFab,
 } from "@/components/site/sections";
 
