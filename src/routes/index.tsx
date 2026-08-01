@@ -1083,7 +1083,7 @@ function FinalCta() {
 /* ---------- Contact ---------- */
 
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   return (
     <Section id="contact" className="bg-secondary/50">
       <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
@@ -1098,16 +1098,34 @@ function Contact() {
 
           <form
             className="mt-8 grid gap-4 rounded-3xl border border-border bg-card p-6 md:p-8"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSubmitted(true);
+              const formEl = e.currentTarget;
+              setStatus("sending");
+              try {
+                const res = await fetch("https://formsubmit.co/ajax/hello@bezyde.com", {
+                  method: "POST",
+                  headers: { Accept: "application/json" },
+                  body: new FormData(formEl),
+                });
+                if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+                setStatus("sent");
+                formEl.reset();
+              } catch (err) {
+                console.error("Enquiry submission failed", err);
+                setStatus("error");
+              }
             }}
           >
+            <input type="hidden" name="_subject" value="New Bezyde enquiry from the website" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Name" name="name" placeholder="Your full name" />
-              <Field label="Phone" name="phone" type="tel" placeholder="+91 …" />
+              <Field label="Name" name="name" placeholder="Your full name" required />
+              <Field label="Phone" name="phone" type="tel" placeholder="+91 …" required />
             </div>
-            <Field label="Email" name="email" type="email" placeholder="you@example.com" />
+            <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
             <Field label="Who needs a companion?" name="who" placeholder="e.g. My mother, 74" />
             <Field label="Preferred schedule" name="schedule" placeholder="e.g. Mon, Wed, Fri mornings" />
             <label className="block">
@@ -1121,11 +1139,21 @@ function Contact() {
             </label>
             <button
               type="submit"
+              disabled={status === "sending"}
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
             >
-              {submitted ? "Thank you — we'll be in touch!" : "Send Enquiry"}
+              {status === "sending"
+                ? "Sending…"
+                : status === "sent"
+                  ? "Thank you — we'll be in touch!"
+                  : "Send Enquiry"}
               <ArrowRight className="h-4 w-4" />
             </button>
+            {status === "error" && (
+              <p className="text-sm text-destructive">
+                Something went wrong. Please call us on +91 8136979757 or email hello@bezyde.com.
+              </p>
+            )}
           </form>
         </motion.div>
 
