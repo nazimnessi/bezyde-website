@@ -43,6 +43,7 @@ import heroImg from "@/assets/hero-companion.jpg";
 import walkImg from "@/assets/walk-together.jpg";
 import portraitImg from "@/assets/portrait-senior.jpg";
 import readingImg from "@/assets/reading-together.jpg";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -108,24 +109,12 @@ function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
-function Logo({ className = "" }: { className?: string }) {
-  return (
-    <a href="#top" className={`flex items-center gap-2 ${className}`} aria-label="Bezyde home">
-      <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft">
-        <HeartHandshake className="h-5 w-5" aria-hidden />
-      </span>
-      <span className="font-display text-2xl font-semibold tracking-tight text-foreground">
-        Bezyde
-      </span>
-    </a>
-  );
-}
-
 /* ---------- Nav ---------- */
 
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#how", label: "How It Works" },
+  { href: "/our-story", label: "Our Story" },
   { href: "#why", label: "Why Bezyde" },
   { href: "#pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
