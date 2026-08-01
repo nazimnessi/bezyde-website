@@ -43,6 +43,7 @@ import heroImg from "@/assets/hero-companion.jpg";
 import walkImg from "@/assets/walk-together.jpg";
 import portraitImg from "@/assets/portrait-senior.jpg";
 import readingImg from "@/assets/reading-together.jpg";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -108,24 +109,12 @@ function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
-function Logo({ className = "" }: { className?: string }) {
-  return (
-    <a href="#top" className={`flex items-center gap-2 ${className}`} aria-label="Bezyde home">
-      <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft">
-        <HeartHandshake className="h-5 w-5" aria-hidden />
-      </span>
-      <span className="font-display text-2xl font-semibold tracking-tight text-foreground">
-        Bezyde
-      </span>
-    </a>
-  );
-}
-
 /* ---------- Nav ---------- */
 
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#how", label: "How It Works" },
+  { href: "/our-story", label: "Our Story" },
   { href: "#why", label: "Why Bezyde" },
   { href: "#pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
@@ -1094,7 +1083,7 @@ function FinalCta() {
 /* ---------- Contact ---------- */
 
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   return (
     <Section id="contact" className="bg-secondary/50">
       <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
@@ -1109,16 +1098,34 @@ function Contact() {
 
           <form
             className="mt-8 grid gap-4 rounded-3xl border border-border bg-card p-6 md:p-8"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSubmitted(true);
+              const formEl = e.currentTarget;
+              setStatus("sending");
+              try {
+                const res = await fetch("https://formsubmit.co/ajax/hello@bezyde.com", {
+                  method: "POST",
+                  headers: { Accept: "application/json" },
+                  body: new FormData(formEl),
+                });
+                if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+                setStatus("sent");
+                formEl.reset();
+              } catch (err) {
+                console.error("Enquiry submission failed", err);
+                setStatus("error");
+              }
             }}
           >
+            <input type="hidden" name="_subject" value="New Bezyde enquiry from the website" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Name" name="name" placeholder="Your full name" />
-              <Field label="Phone" name="phone" type="tel" placeholder="+91 …" />
+              <Field label="Name" name="name" placeholder="Your full name" required />
+              <Field label="Phone" name="phone" type="tel" placeholder="+91 …" required />
             </div>
-            <Field label="Email" name="email" type="email" placeholder="you@example.com" />
+            <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
             <Field label="Who needs a companion?" name="who" placeholder="e.g. My mother, 74" />
             <Field label="Preferred schedule" name="schedule" placeholder="e.g. Mon, Wed, Fri mornings" />
             <label className="block">
@@ -1132,11 +1139,21 @@ function Contact() {
             </label>
             <button
               type="submit"
+              disabled={status === "sending"}
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
             >
-              {submitted ? "Thank you — we'll be in touch!" : "Send Enquiry"}
+              {status === "sending"
+                ? "Sending…"
+                : status === "sent"
+                  ? "Thank you — we'll be in touch!"
+                  : "Send Enquiry"}
               <ArrowRight className="h-4 w-4" />
             </button>
+            {status === "error" && (
+              <p className="text-sm text-destructive">
+                Something went wrong. Please call us on +91 8136979757 or email hello@bezyde.com.
+              </p>
+            )}
           </form>
         </motion.div>
 
@@ -1173,11 +1190,13 @@ function Field({
   name,
   type = "text",
   placeholder,
+  required = false,
 }: {
   label: string;
   name: string;
   type?: string;
   placeholder?: string;
+  required?: boolean;
 }) {
   return (
     <label className="block">
@@ -1186,6 +1205,7 @@ function Field({
         type={type}
         name={name}
         placeholder={placeholder}
+        required={required}
         className="w-full rounded-2xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/15"
       />
     </label>
