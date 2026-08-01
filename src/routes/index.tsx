@@ -475,7 +475,7 @@ function Why() {
 
 const plans = [
   {
-    name: "Assure",
+    name: "Nearby",
     price: "₹6,999",
     priceSuffix: "/month",
     tag: "Steady company for an independent parent.",
@@ -494,10 +494,10 @@ const plans = [
       "Emergency escalation protocol",
       "Birthday and festival acknowledgements",
     ],
-    cta: "Choose Assure",
+    cta: "Choose Nearby",
   },
   {
-    name: "Care+",
+    name: "Together",
     price: "₹10,999",
     priceSuffix: "/month",
     tag: "Regular support and a dependable second set of eyes.",
@@ -507,7 +507,7 @@ const plans = [
       { label: "Frequency", value: "Twice-weekly visits" },
       { label: "Duration", value: "1–1.5 hours per visit" },
     ],
-    includesPrefix: "Everything in Assure, plus",
+    includesPrefix: "Everything in Nearby, plus",
     includes: [
       "Extended errands",
       "Pharmacy pickups",
@@ -517,10 +517,10 @@ const plans = [
       "Priority scheduling for additional services",
       "Flexible rescheduling",
     ],
-    cta: "Choose Care+",
+    cta: "Choose Together",
   },
   {
-    name: "Guardian",
+    name: "Wholehearted",
     price: "₹16,499",
     priceSuffix: "/month",
     tag: "Comprehensive companionship with greater reassurance.",
@@ -529,17 +529,17 @@ const plans = [
       { label: "Visits", value: "14–16 visits per month" },
       { label: "Frequency", value: "3–4 visits every week" },
     ],
-    includesPrefix: "Everything in Care+, plus",
+    includesPrefix: "Everything in Together, plus",
     includes: [
       "Home safety observations during every visit",
       "Priority emergency response coordination",
       "Partner clinic referral benefits",
       "Companion continuity guarantee through familiar backup companions",
     ],
-    cta: "Choose Guardian",
+    cta: "Choose Wholehearted",
   },
   {
-    name: "Signature Care",
+    name: "All In",
     price: "Talk to Us",
     priceSuffix: "",
     tag: "Personalized care for unique needs.",
@@ -1040,13 +1040,14 @@ function Contact() {
               <Field label="Phone" name="phone" type="tel" placeholder="+91 …" required />
             </div>
             <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
-            <Field label="Who needs a companion?" name="who" placeholder="e.g. My mother, 74" />
+            <Field label="Who needs a companion?" name="who" placeholder="e.g. My mother, 74" required />
             <Field label="Preferred schedule" name="schedule" placeholder="e.g. Mon, Wed, Fri mornings" />
             <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-foreground">Message</span>
+              <span className="mb-1.5 block text-sm font-medium text-foreground">Message <span className="text-destructive">*</span></span>
               <textarea
                 name="message"
                 rows={4}
+                required
                 placeholder="Anything we should know?"
                 className="w-full rounded-2xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/15"
               />
