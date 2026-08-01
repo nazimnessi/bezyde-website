@@ -8,15 +8,18 @@ import portraitImg from "@/assets/portrait-senior.jpg";
 import readingImg from "@/assets/reading-together.jpg";
 import { SiteNav } from "@/components/SiteNav";
 import { Section, Eyebrow, fadeUp } from "@/components/site/shared";
-import { plans, problems } from "@/components/site/data";
+import { problems } from "@/components/site/data";
 import {
   BezydePromise,
+  Contact,
   Faq,
   FinalCta,
   Footer,
   HowItWorks,
+  PlansGrid,
   ServicesGrid,
   TrustBar,
+  Why,
   WhatsAppFab,
 } from "@/components/site/sections";
 
@@ -271,38 +274,7 @@ function PricingPreview() {
         </p>
       </motion.div>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {plans.map((p, i) => (
-          <motion.div
-            key={p.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: i * 0.06 }}
-            className={`rounded-3xl border p-5 ${
-              p.popular ? "border-primary bg-primary text-primary-foreground shadow-soft" : "border-border bg-card"
-            }`}
-          >
-            {p.popular && (
-              <span className="mb-2 inline-flex items-center gap-1 rounded-full bg-accent px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-accent-foreground">
-                <Star className="h-3 w-3 fill-current" /> Most Popular
-              </span>
-            )}
-            <h3 className="font-display text-lg font-semibold">{p.name}</h3>
-            <div className="mt-2 flex items-baseline gap-1">
-              <span className="font-display text-2xl font-semibold">{p.price}</span>
-              {p.priceSuffix && (
-                <span className={`text-xs ${p.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                  {p.priceSuffix}
-                </span>
-              )}
-            </div>
-            <p className={`mt-2 text-sm leading-relaxed ${p.popular ? "text-primary-foreground/85" : "text-muted-foreground"}`}>
-              {p.schedule[0]?.value ?? "Built around your family's needs"}
-            </p>
-          </motion.div>
-        ))}
-      </div>
+      <PlansGrid />
 
       <div className="mt-10 text-center">
         <Link
@@ -328,11 +300,13 @@ function Landing() {
         <Problem />
         <ServicesPreview />
         <HowItWorks />
+        <Why />
         <PricingPreview />
         <Section>
           <BezydePromise compact />
         </Section>
         <Faq limit={4} />
+        <Contact />
         <FinalCta />
       </main>
       <Footer />
