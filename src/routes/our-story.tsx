@@ -40,13 +40,61 @@ const paragraphs = [
   "We still think about him. Everything we built traces back to that afternoon.",
 ];
 
+function StoryImage({
+  src,
+  alt,
+  caption,
+  tall = false,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  tall?: boolean;
+}) {
+  return (
+    <motion.figure
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="my-10 md:my-12"
+    >
+      <div className="overflow-hidden rounded-3xl border border-border shadow-soft">
+        <img
+          src={src}
+          alt={alt}
+          width={1280}
+          height={860}
+          loading="lazy"
+          className={`w-full object-cover ${tall ? "h-72 md:h-[26rem]" : "h-60 md:h-80"}`}
+        />
+      </div>
+      <figcaption className="mt-3 text-center text-sm italic text-muted-foreground">
+        {caption}
+      </figcaption>
+    </motion.figure>
+  );
+}
+
+function StoryText({ items }: { items: string[] }) {
+  return (
+    <div className="space-y-6">
+      {items.map((p, i) => (
+        <p key={i} className="text-lg leading-relaxed text-foreground/85">
+          {p}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 function OurStory() {
   return (
     <div className="min-h-screen bg-background">
       <SiteNav active="/our-story" />
 
       <main>
-        <section className="bg-secondary/50 py-16 md:py-24">
+        <section className="bg-secondary/50 pb-16 pt-28 md:pb-24 md:pt-36">
           <div className="container-wide max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -67,28 +115,53 @@ function OurStory() {
           </div>
         </section>
 
-        <article className="py-16 md:py-20">
+        <article className="py-14 md:py-20">
           <div className="container-wide max-w-3xl">
-            <figure className="overflow-hidden rounded-3xl border border-border shadow-soft">
-              <img
-                src={portraitImg}
-                alt="An elderly man sitting at home with a cup of tea"
-                className="h-72 w-full object-cover md:h-96"
-                loading="lazy"
-              />
+            <StoryImage
+              src={carImg}
+              alt="An old car parked in the shaded courtyard of a Kerala home"
+              caption="A twenty-minute errand, we figured. It took the whole afternoon."
+              tall
+            />
+
+            <StoryText items={paragraphs.slice(0, 3)} />
+
+            <StoryImage
+              src={teaImg}
+              alt="Two cups of tea on a small wooden table in a Kerala living room"
+              caption="Cups that looked like they'd been waiting for an occasion worth using them."
+            />
+
+            <StoryText items={paragraphs.slice(3, 5)} />
+
+            <figure className="my-12 rounded-3xl border border-primary/20 bg-primary-soft/40 p-7 md:p-9">
+              <Quote className="h-6 w-6 text-primary" aria-hidden />
+              <blockquote className="mt-3 font-display text-2xl leading-snug text-foreground md:text-3xl">
+                “It’s good to have someone to talk to.”
+              </blockquote>
+              <figcaption className="mt-3 text-sm text-muted-foreground">
+                He said it lightly, almost as a joke on himself. Neither of us laughed.
+              </figcaption>
             </figure>
 
-            <div className="mt-10 space-y-6">
-              {paragraphs.map((p, i) => (
-                <p key={i} className="text-lg leading-relaxed text-foreground/85">
-                  {p}
-                </p>
-              ))}
-            </div>
+            <StoryImage
+              src={elderImg}
+              alt="An elderly man smiling as he talks, family photographs behind him"
+              caption="Every story circled back to how long it had been since anyone sat across from him."
+            />
 
-            <div className="mt-12 rounded-3xl border border-primary/20 bg-primary-soft/50 p-8 text-center">
-              <Quote className="mx-auto h-7 w-7 text-primary" aria-hidden />
-              <p className="mt-4 font-display text-2xl font-semibold text-foreground">
+            <StoryText items={paragraphs.slice(5, 8)} />
+
+            <StoryImage
+              src={visitImg}
+              alt="A Bezyde companion sitting and laughing with an elderly woman on a veranda"
+              caption="A real, trusted person back in the rhythm of a parent’s week."
+            />
+
+            <StoryText items={paragraphs.slice(8)} />
+
+            <div className="mt-14 rounded-3xl border border-primary/20 bg-primary-soft/50 p-8 text-center">
+              <p className="font-display text-2xl font-semibold text-foreground">
                 Bezyde — Companionship. Care. Community.
               </p>
               <Link
