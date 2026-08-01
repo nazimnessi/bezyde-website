@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 
-import { Logo } from "@/components/Logo";
-import portraitImg from "@/assets/portrait-senior.jpg";
+import { SiteNav } from "@/components/SiteNav";
+import carImg from "@/assets/story-old-car.jpg";
+import teaImg from "@/assets/story-tea-cups.jpg";
+import elderImg from "@/assets/story-elder-talking.jpg";
+import visitImg from "@/assets/story-companion-visit.jpg";
 
 const TITLE = "Our Story — How Bezyde Began | Bezyde";
 const DESC =
@@ -40,18 +43,7 @@ const paragraphs = [
 function OurStory() {
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-background/90 backdrop-blur-lg">
-        <div className="container-wide flex h-16 items-center justify-between md:h-20">
-          <Logo />
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground/80 transition hover:border-primary hover:text-primary"
-          >
-            <ArrowLeft className="h-4 w-4" aria-hidden />
-            Back home
-          </Link>
-        </div>
-      </header>
+      <SiteNav active="/our-story" />
 
       <main>
         <section className="bg-secondary/50 py-16 md:py-24">
