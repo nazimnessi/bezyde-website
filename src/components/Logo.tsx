@@ -11,7 +11,7 @@ export function Logo({ className = "" }: { className?: string }) {
         loading="eager"
       />
       <img
-        src={wordmarkImg}
+        src={wordmarkAsset.url}
         alt="Bezyde"
         className="h-4 w-auto md:h-[1.15rem]"
         loading="eager"
