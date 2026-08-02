@@ -1,5 +1,5 @@
 import logoImg from "@/assets/bezyde-logo.png";
-import wordmarkImg from "@/assets/bezyde-wordmark.png";
+import wordmarkAsset from "@/assets/bezyde-wordmark.png.asset.json";
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
