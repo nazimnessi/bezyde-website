@@ -3,7 +3,7 @@ import wordmarkAsset from "@/assets/bezyde-wordmark.png.asset.json";
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="/" className={`flex items-center gap-2.5 ${className}`} aria-label="Bezyde home">
+    <a href="/" className={`flex items-center gap-1 ${className}`} aria-label="Bezyde home">
       <img
         src={logoImg}
         alt="Bezyde logo — a companion walking beside an elderly person"
@@ -13,7 +13,7 @@ export function Logo({ className = "" }: { className?: string }) {
       <img
         src={wordmarkAsset.url}
         alt="Bezyde"
-        className="h-4 w-auto md:h-[1.15rem]"
+        className="h-[1.75rem] w-auto md:h-[2.15rem]"
         loading="eager"
       />
     </a>
