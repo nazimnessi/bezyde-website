@@ -1,5 +1,5 @@
 import logoImg from "@/assets/bezyde-logo.png";
-import wordmarkAsset from "@/assets/bezyde-wordmark.png.asset.json";
+import wordmarkAsset from "@/assets/bezyde-wordmark.png";
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
@@ -11,7 +11,7 @@ export function Logo({ className = "" }: { className?: string }) {
         loading="eager"
       />
       <img
-        src={wordmarkAsset.url}
+        src={wordmarkAsset}
         alt="Bezyde"
         className="h-[1.75rem] w-auto md:h-[2.15rem]"
         loading="eager"
